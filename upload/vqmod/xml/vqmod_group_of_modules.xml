@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>A group of modules</id>
+	<version>1.5.x and above</version>
+	<vqmver required="true">2.3.0</vqmver>
+	<author>halfhope.ru</author>
+	
+	<file name="admin/controller/common/header.php">
+		<operation error="log">
+			<search position="replace"><![CDATA[$this->data['module'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');]]></search>
+			<add><![CDATA[$this->data['module'] = $this->url->link('extension/extended_module', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/module/*.php">
+		<operation error="log">
+			<search position="replace"><![CDATA[$this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL')]]></search>
+			<add><![CDATA[$this->url->link('extension/extended_module', 'token=' . $this->session->data['token'], 'SSL')]]></add>
+		</operation>
+	</file>
+
+</modification>
