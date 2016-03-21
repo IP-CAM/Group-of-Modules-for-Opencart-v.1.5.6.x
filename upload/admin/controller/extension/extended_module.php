@@ -106,7 +106,7 @@ class ControllerExtensionExtendedModule extends Controller {
 				if (!in_array($extension, $extensions)) {
 					$action[] = array(
 						'text' => $this->language->get('text_install'),
-						'href' => $this->url->link('extension/module/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL')
+						'href' => $this->url->link('extension/extended_module/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL')
 					);
 				} else {
 					$action[] = array(
@@ -116,7 +116,7 @@ class ControllerExtensionExtendedModule extends Controller {
 								
 					$action[] = array(
 						'text' => $this->language->get('text_uninstall'),
-						'href' => $this->url->link('extension/module/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL')
+						'href' => $this->url->link('extension/extended_module/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL')
 					);
 				}
 				if (array_key_exists($extension, $mods_sort_array)) {
@@ -348,7 +348,7 @@ class ControllerExtensionExtendedModule extends Controller {
 				if (!in_array($extension, $extensions)) {
 					$action[] = array(
 						'text' => $this->language->get('text_install'),
-						'href' => $this->url->link('extension/module/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL')
+						'href' => $this->url->link('extension/extended_module/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL')
 					);
 				} else {
 					$action[] = array(
@@ -358,7 +358,7 @@ class ControllerExtensionExtendedModule extends Controller {
 								
 					$action[] = array(
 						'text' => $this->language->get('text_uninstall'),
-						'href' => $this->url->link('extension/module/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL')
+						'href' => $this->url->link('extension/extended_module/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL')
 					);
 				}
 				if (array_key_exists($extension, $mods_sort_array)) {
@@ -429,10 +429,10 @@ class ControllerExtensionExtendedModule extends Controller {
 	public function install() {
 		$this->load->language('extension/extended_module');
 		
-		if (!$this->user->hasPermission('modify', 'extension/module')) {
+		if (!$this->user->hasPermission('modify', 'extension/extended_module')) {
 			$this->session->data['error'] = $this->language->get('error_permission'); 
 			
-			$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
+			$this->redirect($this->url->link('extension/extended_module', 'token=' . $this->session->data['token'], 'SSL'));
 		} else {
 			$this->load->model('setting/extension');
 			
@@ -452,17 +452,17 @@ class ControllerExtensionExtendedModule extends Controller {
 				$class->install();
 			}
 			
-			$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
+			$this->redirect($this->url->link('extension/extended_module', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 	}
 	
 	public function uninstall() {
 		$this->load->language('extension/extended_module');
 		
-		if (!$this->user->hasPermission('modify', 'extension/module')) {
+		if (!$this->user->hasPermission('modify', 'extension/extended_module')) {
 			$this->session->data['error'] = $this->language->get('error_permission'); 
 			
-			$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
+			$this->redirect($this->url->link('extension/extended_module', 'token=' . $this->session->data['token'], 'SSL'));
 		} else {		
 			$this->load->model('setting/extension');
 			$this->load->model('setting/setting');
@@ -480,7 +480,7 @@ class ControllerExtensionExtendedModule extends Controller {
 				$class->uninstall();
 			}
 		
-			$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));	
+			$this->redirect($this->url->link('extension/extended_module', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 	}
 	
